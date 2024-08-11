@@ -74,7 +74,6 @@ public class Main {
     private static final List<InputFile> INPUTS = List.of(
         input("assets/minecraft/textures/painting/paintings_kristoffer_zetterstrand.png",
             painting("back", 15, 0, 1, 1),
-
             painting("kebab", 0, 0, 1, 1),
             painting("aztec", 1, 0, 1, 1),
             painting("alban", 2, 0, 1, 1),
@@ -209,8 +208,8 @@ public class Main {
             particle("spell_6", 6, 9),
             particle("spell_7", 7, 9),
 
-            particle("bubble_pop_0", 0 * 2, 16, 0, 3, 2, 2),
-            particle("bubble_pop_1", 1 * 2, 16, 0, 3, 2, 2),
+                particle("bubble_pop_0", 0, 16, 0, 3, 2, 2),
+                particle("bubble_pop_1", 2, 16, 0, 3, 2, 2),
             particle("bubble_pop_2", 2 * 2, 16, 0, 3, 2, 2),
             particle("bubble_pop_3", 3 * 2, 16, 0, 3, 2, 2),
             particle("bubble_pop_4", 4 * 2, 16, 0, 3, 2, 2),
@@ -231,7 +230,7 @@ public class Main {
             particle("drip_fall", 1, 7),
             particle("drip_land", 2, 7),
 
-            new OutputFile("assets/minecraft/textures/entity/fishing_hook.png", b256(8 * 1, 8 * 2, 8, 8))
+                new OutputFile("assets/minecraft/textures/entity/fishing_hook.png", b256(8, 8 * 2, 8, 8))
         ),
         input("assets/minecraft/textures/entity/explosion.png",
             explosion("explosion_0", 0, 0),

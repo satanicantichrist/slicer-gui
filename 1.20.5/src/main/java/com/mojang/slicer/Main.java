@@ -21,12 +21,12 @@ public class Main {
         );
     }
 
-    private static InputFile input(final String path, final OutputFile... outputs) {
-        return new InputFile(path).outputs(outputs);
+    private static InputFile input(final OutputFile... outputs) {
+        return new InputFile("assets/minecraft/textures/map/map_icons.png").outputs(outputs);
     }
 
     private static final List<InputFile> INPUTS = List.of(
-        input("assets/minecraft/textures/map/map_icons.png",
+            input(
             mapDecoration("player", 0),
             mapDecoration("frame", 1),
             mapDecoration("red_marker", 2),
