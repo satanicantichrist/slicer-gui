@@ -13,16 +13,9 @@ import static com.mojang.slicer.Slicer.skippedFiles;
 import static com.mojang.slicer.Slicer.slicedFiles;
 
 public class AppGui extends JPanel {
-    private JButton inputButton;
-    private JButton leftoverButton;
     private JTextField inputField;
-    private JButton outputButton;
-    private JButton runButton;
     private JTextField outputField;
     private JTextField leftoverField;
-    private JLabel jcomp8;
-    private JLabel jcomp9;
-    private JLabel jcomp10;
     private String inputFolder;
     private String outputFolder;
     private String leftoverFolder;
@@ -41,16 +34,16 @@ public class AppGui extends JPanel {
         JFrame frame = new JFrame("Minecraft Slicer - " + minecraftVersion);
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        inputButton = new JButton("...");
-        leftoverButton = new JButton("...");
+        JButton inputButton = new JButton("...");
+        JButton leftoverButton = new JButton("...");
         inputField = new JTextField(5);
-        outputButton = new JButton("...");
-        runButton = new JButton("Run");
+        JButton outputButton = new JButton("...");
+        JButton runButton = new JButton("Run");
         outputField = new JTextField(5);
         leftoverField = new JTextField(5);
-        jcomp8 = new JLabel("Input directory or .zip file");
-        jcomp9 = new JLabel("Output directory");
-        jcomp10 = new JLabel("Leftover directory");
+        JLabel inputLabel = new JLabel("Input directory or .zip file");
+        JLabel outputLabel = new JLabel("Output directory");
+        JLabel leftoverLabel = new JLabel("Leftover directory");
 
         //adjust size and set layout
         setPreferredSize(new Dimension(578, 186));
@@ -64,9 +57,9 @@ public class AppGui extends JPanel {
         add(runButton);
         add(outputField);
         add(leftoverField);
-        add(jcomp8);
-        add(jcomp9);
-        add(jcomp10);
+        add(inputLabel);
+        add(outputLabel);
+        add(leftoverLabel);
 
         //set component bounds (only needed by Absolute Positioning)
         inputButton.setBounds(500, 10, 50, 25);
@@ -76,9 +69,9 @@ public class AppGui extends JPanel {
         runButton.setBounds(235, 145, 100, 25);
         outputField.setBounds(170, 40, 330, 25);
         leftoverField.setBounds(170, 70, 330, 25);
-        jcomp8.setBounds(27, 10, 150, 25);
-        jcomp9.setBounds(70, 40, 100, 25);
-        jcomp10.setBounds(64, 70, 115, 25);
+        inputLabel.setBounds(27, 10, 150, 25);
+        outputLabel.setBounds(70, 40, 100, 25);
+        leftoverLabel.setBounds(64, 70, 115, 25);
 
         inputField.setText(inputFolder);
         outputField.setText(outputFolder);
@@ -118,7 +111,7 @@ public class AppGui extends JPanel {
             outputFolder = outputField.getText();
             leftoverFolder = leftoverField.getText();
             try {
-                if (leftoverFolder.strip().equals("")) {
+                if (leftoverFolder.isBlank()) {
                     new Slicer(Path.of(inputFolder), Path.of(outputFolder), null).process(INPUTS);
                 } else
                     new Slicer(Path.of(inputFolder), Path.of(outputFolder), Path.of(leftoverFolder)).process(INPUTS);
