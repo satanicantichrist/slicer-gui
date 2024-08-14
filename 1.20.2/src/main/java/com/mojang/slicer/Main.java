@@ -65,15 +65,9 @@ public class Main {
     }
 
     private static BufferedImage clip(BufferedImage image) {
-        final int imageWidth = image.getWidth();
-        final int imageHeight = image.getHeight();
-        final int x = STANDARD_CONTAINER_BOX.scaleX(imageWidth);
-        final int y = STANDARD_CONTAINER_BOX.scaleY(imageHeight);
-        final int width = STANDARD_CONTAINER_BOX.scaleW(imageWidth);
-        final int height = STANDARD_CONTAINER_BOX.scaleH(imageHeight);
-        final BufferedImage subImage = image.getSubimage(x, y, width, height);
-        final BufferedImage clippedImage = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_ARGB);
-        clippedImage.getGraphics().drawImage(subImage, x, y, null);
+        final BufferedImage subImage = image.getSubimage(STANDARD_CONTAINER_BOX.x(), STANDARD_CONTAINER_BOX.y(), STANDARD_CONTAINER_BOX.w(), STANDARD_CONTAINER_BOX.h());
+        final BufferedImage clippedImage = new BufferedImage(STANDARD_CONTAINER_BOX.totalW(), STANDARD_CONTAINER_BOX.totalH(), BufferedImage.TYPE_INT_ARGB);
+        clippedImage.getGraphics().drawImage(subImage, STANDARD_CONTAINER_BOX.x(), STANDARD_CONTAINER_BOX.y(), null);
         return clippedImage;
     }
 
@@ -142,34 +136,34 @@ public class Main {
             input("assets/minecraft/textures/gui/container/creative_inventory/tabs.png",
                     new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/scroller.png", new Box(232, 0, 12, 15, 256, 256)),
                     new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/scroller_disabled.png", new Box(244, 0, 12, 15, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_1.png", new Box(0, 0, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_2.png", new Box(26, 0, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_3.png", new Box(52, 0, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_4.png", new Box(78, 0, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_5.png", new Box(104, 0, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_6.png", new Box(130, 0, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_7.png", new Box(156, 0, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_1.png", new Box(0, 32, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_2.png", new Box(26, 32, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_3.png", new Box(52, 32, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_4.png", new Box(78, 32, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_5.png", new Box(104, 32, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_6.png", new Box(130, 32, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_7.png", new Box(156, 32, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_1.png", new Box(0, 64, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_2.png", new Box(26, 64, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_3.png", new Box(52, 64, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_4.png", new Box(78, 64, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_5.png", new Box(104, 64, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_6.png", new Box(130, 64, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_7.png", new Box(156, 64, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_1.png", new Box(0, 96, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_2.png", new Box(26, 96, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_3.png", new Box(52, 96, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_4.png", new Box(78, 96, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_5.png", new Box(104, 96, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_6.png", new Box(130, 96, 26, 32, 256, 256)),
-                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_7.png", new Box(156, 96, 26, 32, 256, 256))
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_1.png", new Box(0, 0, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_2.png", new Box(28, 0, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_3.png", new Box(56, 0, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_4.png", new Box(84, 0, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_5.png", new Box(112, 0, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_6.png", new Box(140, 0, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_unselected_7.png", new Box(168, 0, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_1.png", new Box(0, 32, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_2.png", new Box(28, 32, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_3.png", new Box(56, 32, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_4.png", new Box(84, 32, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_5.png", new Box(112, 32, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_6.png", new Box(140, 32, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_top_selected_7.png", new Box(168, 32, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_1.png", new Box(0, 64, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_2.png", new Box(28, 64, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_3.png", new Box(56, 64, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_4.png", new Box(84, 64, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_5.png", new Box(112, 64, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_6.png", new Box(140, 64, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_unselected_7.png", new Box(168, 64, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_1.png", new Box(0, 96, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_2.png", new Box(28, 96, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_3.png", new Box(56, 96, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_4.png", new Box(84, 96, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_5.png", new Box(112, 96, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_6.png", new Box(140, 96, 28, 32, 256, 256)),
+                    new OutputFile("assets/minecraft/textures/gui/sprites/container/creative_inventory/tab_bottom_selected_7.png", new Box(168, 96, 28, 32, 256, 256))
             ),
             input("assets/minecraft/textures/gui/advancements/tabs.png",
                     new OutputFile("assets/minecraft/textures/gui/sprites/advancements/tab_above_left_selected.png", new Box(0, 32, 28, 32, 256, 256)),
@@ -204,7 +198,6 @@ public class Main {
                     new OutputFile("assets/minecraft/textures/gui/sprites/widget/checkbox.png", new Box(0, 0, 20, 20, 64, 64))
             ),
             input("assets/minecraft/textures/gui/container/blast_furnace.png",
-                    new OutputFile("assets/minecraft/textures/gui/container/blast_furnace.png", STANDARD_CONTAINER_BOX).apply(Main::clip),
                     new OutputFile("assets/minecraft/textures/gui/sprites/container/blast_furnace/lit_progress.png", new Box(176, 0, 14, 14, 256, 256)),
                     new OutputFile("assets/minecraft/textures/gui/sprites/container/blast_furnace/burn_progress.png", new Box(176, 14, 24, 16, 256, 256))
             ),
@@ -302,7 +295,6 @@ public class Main {
                     new OutputFile("assets/minecraft/textures/gui/sprites/player_list/make_operator_highlighted.png", new Box(0, 7, 8, 7, 8, 14))
             ),
             input("assets/minecraft/textures/gui/container/beacon.png",
-                    new OutputFile("assets/minecraft/textures/gui/container/beacon.png", new Box(0, 0, 230, 219, 256, 256)).apply(Main::clip),
                     new OutputFile("assets/minecraft/textures/gui/sprites/container/beacon/button_disabled.png", new Box(44, 219, 22, 22, 256, 256)),
                     new OutputFile("assets/minecraft/textures/gui/sprites/container/beacon/button_selected.png", new Box(22, 219, 22, 22, 256, 256)),
                     new OutputFile("assets/minecraft/textures/gui/sprites/container/beacon/button_highlighted.png", new Box(66, 219, 22, 22, 256, 256)),
@@ -393,7 +385,6 @@ public class Main {
                     new OutputFile("assets/minecraft/textures/gui/sprites/backup/restore_highlighted.png", new Box(0, 10, 17, 10, 17, 20))
             ),
             input("assets/minecraft/textures/gui/container/villager2.png",
-                    new OutputFile("assets/minecraft/textures/gui/container/villager.png", new Box(0, 0, 276, 166, 512, 256)).apply(Main::clip),
                     new OutputFile("assets/minecraft/textures/gui/sprites/container/villager/out_of_stock.png", new Box(311, 0, 28, 21, 512, 256)),
                     new OutputFile("assets/minecraft/textures/gui/sprites/container/villager/experience_bar_background.png", new Box(0, 186, 102, 5, 512, 256)),
                     new OutputFile("assets/minecraft/textures/gui/sprites/container/villager/experience_bar_current.png", new Box(0, 191, 102, 5, 512, 256)),
@@ -528,7 +519,6 @@ public class Main {
                     new OutputFile("assets/minecraft/textures/gui/sprites/notification/more.png", new Box(40, 0, 8, 8, 48, 16))
             ),
             input("assets/minecraft/textures/gui/recipe_book.png",
-                    new OutputFile("assets/minecraft/textures/gui/recipe_book.png", new Box(0, 0, 149, 168, 256, 256)).apply(Main::clip),
                     new OutputFile("assets/minecraft/textures/gui/sprites/recipe_book/furnace_filter_enabled.png", new Box(180, 182, 26, 16, 256, 256)),
                     new OutputFile("assets/minecraft/textures/gui/sprites/recipe_book/furnace_filter_disabled.png", new Box(152, 182, 26, 16, 256, 256)),
                     new OutputFile("assets/minecraft/textures/gui/sprites/recipe_book/furnace_filter_enabled_highlighted.png", new Box(180, 200, 26, 16, 256, 256)),
@@ -765,6 +755,10 @@ public class Main {
             copy("container/creative_inventory/tab_inventory"),
             copy("container/creative_inventory/tab_item_search"),
             copy("container/creative_inventory/tab_items"),
+            clip("container/blast_furnace", STANDARD_CONTAINER_BOX),
+            clip("container/villager2", "container/villager", new Box(0, 0, 276, 166, 512, 256)),
+            clip("container/beacon", new Box(0, 0, 230, 219, 256, 256)),
+            clip("recipe_book", new Box(0, 0, 149, 168, 256, 256)),
             clip("container/crafting_table", STANDARD_CONTAINER_BOX),
             clip("container/dispenser", STANDARD_CONTAINER_BOX),
             copy("container/generic_54"),
